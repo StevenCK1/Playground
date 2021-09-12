@@ -13,7 +13,7 @@
   }
 }
 
-.Recipes-header {
+.Recipes-container {
   background-color: #71798a;
   min-height: 100vh;
   display: flex;
@@ -35,4 +35,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.recipe {
+  border-style: solid;
+  padding: 1em;
 }
