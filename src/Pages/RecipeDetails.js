@@ -1,74 +1,36 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { GlobalContext } from "../context";
 import "./RecipeDetails.css";
-import Button from "../Components/Button.js";
 
 function RecipeDetails({ id }) {
   const [selectedRecipe, setSelectedRecipe] = useState();
-  const recipeList = [
-    {
-      id: 0,
-      name: "Pasta",
-      imageUrl: "",
-      method: "",
-      ingredients: [
-        {
-          measurement: "100",
-          unit: "grams",
-          name: "spaghetti",
-        },
-      ],
-    },
-    {
-      id: 1,
-      name: "Pasta 2",
-      imageUrl: "",
-      method: "",
-      ingredients: [
-        {
-          measurement: "100",
-          unit: "grams",
-          name: "spaghetti",
-        },
-      ],
-    },
-  ];
-
+  const { state, dispatch } = useContext(GlobalContext);
+  const { recipes } = state;
   // Mimicing an API call which returns the recipe data from the id in the url
   useEffect(() => {
-    const recipe = recipeList.find((r) => r.id == id);
+    const recipe = recipes.find((r) => r.id == id);
     setSelectedRecipe(recipe);
   }, []);
 
-  const [count, setCount] = useState(0);
-  const addOne = function () {
-    const newCount = count + 1;
-    setCount(newCount);
-  };
   return (
     <>
+      <div className="RecipeDetails"> Recipe Details</div>
+
       {selectedRecipe && (
         <div className="RecipeDetails">
           <header className="RecipeDetails-header">
             <div>{selectedRecipe.name}</div>
-            <h1>RecipeDetails</h1>
-            <img
-              src={process.env.PUBLIC_URL + "/images/logo.svg"}
-              className="RecipeDetails-logo"
-              alt="logo"
-            />
-            <h1>{count}</h1>
-            <p>
-              Edit <code>src/RecipeDetails.js</code> and save to reload.
-            </p>
-            <a
-              className="RecipeDetails-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
-            <Button addOne={addOne}></Button>
+            <div>{selectedRecipe.method}</div>
+            <div>{selectedRecipe.imageUrl}</div>
+            <div>
+              {selectedRecipe.ingredients.map((item, index) => {
+                return (
+                  <div>
+                    <p>{`${item.measurement} ${item.unit} ${item.name}`}</p>
+                  </div>
+                );
+              })}
+            </div>
           </header>
         </div>
       )}

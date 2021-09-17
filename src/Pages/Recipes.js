@@ -1,43 +1,16 @@
-import { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { GlobalContext } from "../context";
 import "./Recipes.css";
-import Button from "../Components/Button.js";
 import { Link } from "@reach/router";
 
 function Recipes() {
-  const receipeList = [
-    {
-      id: 0,
-      name: "Pasta",
-      imageUrl: "",
-      method: "",
-      ingredients: [
-        {
-          measurement: "100",
-          unit: "grams",
-          name: "spaghetti",
-        },
-      ],
-    },
-    {
-      id: 1,
-      name: "Pasta 2",
-      imageUrl: "",
-      method: "",
-      ingredients: [
-        {
-          measurement: "100",
-          unit: "grams",
-          name: "spaghetti",
-        },
-      ],
-    },
-  ];
-
+  const { state, dispatch } = useContext(GlobalContext);
+  const { recipes } = state;
   return (
     <div className="Recipes">
       <h1>Recipes</h1>
       <div className="Recipes-container">
-        {receipeList.map((recipe) => (
+        {recipes.map((recipe) => (
           <Link to={`/recipe-details/${recipe.id}`}>
             <div className="recipe">
               <div>{recipe.name}</div>
