@@ -9,6 +9,7 @@ function Recipes() {
   return (
     <div className="Recipes">
       <h1>Recipes</h1>
+      <Link to={`/create-recipe`}>Create Recipe</Link>
       <div className="Recipes-container">
         {recipes.map((recipe) => (
           <Link to={`/recipe-details/${recipe.id}`}>
