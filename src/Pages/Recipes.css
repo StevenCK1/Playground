@@ -1,5 +1,4 @@
 .Recipes {
-  text-align: center;
 }
 
 .Recipes-logo {
@@ -20,7 +19,6 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
 }
 
@@ -37,7 +35,12 @@
   }
 }
 
-.recipe {
-  border-style: solid;
-  padding: 1em;
+.thumbnail-image {
+  height: 300px;
+}
+
+@media screen and (max-width: 600px) {
+  .thumbnail-image {
+    height: 150px;
+  }
 }

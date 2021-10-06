@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { GlobalContext } from "../context";
 import "./CreateRecipe.css";
 import { Link, navigate } from "@reach/router";
+import Button from "react-bootstrap/Button";
 
 function CreateRecipe() {
   const { state, dispatch } = useContext(GlobalContext);
@@ -110,7 +111,7 @@ function CreateRecipe() {
               ))}
           </div>
         </div>
-        <button onClick={onSave}>Save</button>
+        <Button onClick={onSave}>Save</Button>
       </div>
     </div>
   );

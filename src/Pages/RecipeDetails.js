@@ -19,9 +19,12 @@ function RecipeDetails({ id }) {
       {selectedRecipe && (
         <div className="RecipeDetails">
           <header className="RecipeDetails-header">
+            <img
+              src={selectedRecipe.imageUrl}
+              className="RecipeDetails-main-image"
+            ></img>
             <div>{selectedRecipe.name}</div>
             <div>{selectedRecipe.method}</div>
-            <div>{selectedRecipe.imageUrl}</div>
             <div>
               {selectedRecipe.ingredients.map((item, index) => {
                 return (

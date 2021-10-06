@@ -38,3 +38,7 @@
     transform: rotate(360deg);
   }
 }
+
+.RecipeDetails-main-image {
+  height: 60vh;
+}

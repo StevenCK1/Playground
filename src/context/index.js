@@ -16,7 +16,8 @@ const initialState = {
     {
       id: 0,
       name: "Pasta 1",
-      imageUrl: "abc",
+      imageUrl:
+        "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F9%2F2020%2F09%2F17%2Fcream-tomato-rigatoni-FT-RECIPE1020.jpg",
       method: "testing",
       ingredients: [
         {
@@ -29,7 +30,8 @@ const initialState = {
     {
       id: 1,
       name: "Pasta 2",
-      imageUrl: "zzz",
+      imageUrl:
+        "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/spaghetti-puttanesca_1-1ce4e81.jpg?quality=90&resize=440,400",
       method: "sss",
       ingredients: [
         {
