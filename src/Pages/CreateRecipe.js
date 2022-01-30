@@ -4,7 +4,7 @@ import "./CreateRecipe.css";
 import { Link, navigate } from "@reach/router";
 import Button from "react-bootstrap/Button";
 
-function CreateRecipe() {
+function CreateRecipe({ id }) {
   const { state, dispatch } = useContext(GlobalContext);
   const { recipes } = state;
   const [name, setName] = useState();
@@ -13,6 +13,13 @@ function CreateRecipe() {
   const [ingredientsName, setIngredientsName] = useState();
   const [ingredientsUnit, setIngredientsUnit] = useState();
   const [ingredientsMeasure, setIngredientsMeasure] = useState();
+  const [isEditing, setIsEditing] = useState()
+
+  useEffect(() => {
+    // fetch data from api in order (separate object in properties)
+    // set isEditing layout based on if the recipe is new? (if ID is in database)
+
+  }, []);
 
   const onNameChange = (e) => {
     setName(e.target.value);

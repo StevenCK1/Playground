@@ -22,6 +22,7 @@ function App() {
         <Recipes path="/" />
         <RecipeDetails path="/recipe-details/:id" />
         <CreateRecipe path="/create-recipe" />
+        <CreateRecipe path="/edit-recipe/:id" />
       </Router>
     </GlobalProvider>
   );
