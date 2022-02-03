@@ -13,12 +13,19 @@ function CreateRecipe({ id }) {
   const [ingredientsName, setIngredientsName] = useState();
   const [ingredientsUnit, setIngredientsUnit] = useState();
   const [ingredientsMeasure, setIngredientsMeasure] = useState();
-  const [isEditing, setIsEditing] = useState()
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     // fetch data from api in order (separate object in properties)
-    // set isEditing layout based on if the recipe is new? (if ID is in database)
+    const recipe = recipes.find((r) => r.id == id);
+    setName(recipe.name);
+    setMethod(recipe.method);
+    setIngredients(recipe.ingredients);
 
+    // set isEditing layout based on if the recipe is new? (if ID is in database)
+    if (id) {
+      setIsEditing(true);
+    }
   }, []);
 
   const onNameChange = (e) => {
@@ -53,6 +60,8 @@ function CreateRecipe({ id }) {
   };
 
   const onSave = () => {
+    //if isEditing delete the previous recipe
+
     const newRecipe = {
       id: recipes[recipes.length - 1].id + 1,
       name: name,
@@ -73,30 +82,40 @@ function CreateRecipe({ id }) {
 
   return (
     <div className="CreateRecipe">
-      <h1>CreateRecipe</h1>
-      <Link to={`/`}>Back to Recipes</Link>
+      {isEditing && (
+        <>
+          <h1>{isEditing ? "Edit Recipe" : "Create Recipe"}</h1>
+          <Link to={`/`}>Back to Recipes</Link>
+        </>
+      )}
+      {!isEditing && (
+        <>
+          <h1>{isEditing ? "Edit Recipe" : "Create Recipe"}</h1>
+          <Link to={`/`}>Back to Recipes</Link>
+        </>
+      )}
       <div className="CreateRecipe-container">
         <div>
           <p>Name:</p>
-          <input type="text" onChange={onNameChange}></input>
+          <input value={name} type="text" onChange={onNameChange}></input>
         </div>
         <div>
           <p>Method:</p>
-          <input type="text" onChange={onMethodChange}></input>
+          <input value={method} type="text" onChange={onMethodChange}></input>
         </div>
         <p>Ingredients measurement:</p>
 
         <input
-          type="text"
           value={ingredientsMeasure}
+          type="text"
           onChange={(e) => setIngredientsMeasure(e.target.value)}
         ></input>
         <div>
           <p>Ingredients unit:</p>
 
           <input
-            type="text"
             value={ingredientsUnit}
+            type="text"
             onChange={(e) => setIngredientsUnit(e.target.value)}
           ></input>
 

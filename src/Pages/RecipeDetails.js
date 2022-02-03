@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { GlobalContext } from "../context";
 import "./RecipeDetails.css";
+import Button from "react-bootstrap/Button";
+import { Link, navigate } from "@reach/router";
 
 function RecipeDetails({ id }) {
   const [selectedRecipe, setSelectedRecipe] = useState();
@@ -18,6 +20,10 @@ function RecipeDetails({ id }) {
 
       {selectedRecipe && (
         <div className="RecipeDetails">
+          <Link to={`/edit-recipe/${id}`}>
+            <Button>Edit recipe</Button>
+          </Link>
+
           <header className="RecipeDetails-header">
             <img
               src={selectedRecipe.imageUrl}
