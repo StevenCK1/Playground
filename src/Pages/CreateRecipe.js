@@ -3,10 +3,12 @@ import { GlobalContext } from "../context";
 import "./CreateRecipe.css";
 import { Link, navigate } from "@reach/router";
 import Button from "react-bootstrap/Button";
+import { Row, Col, Container } from "react-bootstrap";
 
 function CreateRecipe({ id }) {
   const { state, dispatch } = useContext(GlobalContext);
   const { recipes } = state;
+  const [recipe, setRecipe] = useState();
   const [name, setName] = useState();
   const [method, setMethod] = useState();
   const [ingredients, setIngredients] = useState([]);
@@ -17,14 +19,15 @@ function CreateRecipe({ id }) {
 
   useEffect(() => {
     // fetch data from api in order (separate object in properties)
-    const recipe = recipes.find((r) => r.id == id);
-    setName(recipe.name);
-    setMethod(recipe.method);
-    setIngredients(recipe.ingredients);
 
     // set isEditing layout based on if the recipe is new? (if ID is in database)
     if (id) {
       setIsEditing(true);
+      const recipe = recipes.find((r) => r.id == id);
+      setRecipe(recipe);
+      setName(recipe.name);
+      setMethod(recipe.method);
+      setIngredients(recipe.ingredients);
     }
   }, []);
 
@@ -61,15 +64,20 @@ function CreateRecipe({ id }) {
 
   const onSave = () => {
     //if isEditing delete the previous recipe
-
+    // if statement to check if is Editing andif yes delete previous data
+    const recipeList = isEditing
+      ? recipes.filter((r) => r.id !== parseInt(id, 10))
+      : [...recipes];
     const newRecipe = {
+      ...recipe,
       id: recipes[recipes.length - 1].id + 1,
       name: name,
       method: method,
       ingredients: ingredients,
     };
-    const updatedRecipes = [...recipes, newRecipe];
+    const updatedRecipes = [...recipeList, newRecipe];
     dispatch({ type: "SET_RECIPES", recipes: updatedRecipes });
+
     navigate(`/`);
   };
 
@@ -85,7 +93,6 @@ function CreateRecipe({ id }) {
       {isEditing && (
         <>
           <h1>{isEditing ? "Edit Recipe" : "Create Recipe"}</h1>
-          <Link to={`/`}>Back to Recipes</Link>
         </>
       )}
       {!isEditing && (
@@ -137,7 +144,18 @@ function CreateRecipe({ id }) {
               ))}
           </div>
         </div>
-        <Button onClick={onSave}>Save</Button>
+        <div>
+          <Row>
+            <Col xs={12} md={6}>
+              <Button onClick={onSave}>Save</Button>
+            </Col>
+            <Col xs={12} md={6}>
+              <Link to={`/recipe-details/${id}`}>
+                <Button> Cancel</Button>
+              </Link>
+            </Col>
+          </Row>
+        </div>
       </div>
     </div>
   );
