@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { render } from "react-dom";
 import { Router, Link } from "@reach/router";
-import Recipes from "./Pages/Recipes";
-import RecipeDetails from "./Pages/RecipeDetails";
-import { GlobalProvider } from "./context";
-import CreateRecipe from "./Pages/CreateRecipe";
+import Recipes from "../Pages/RecipesMain/Recipes";
+import RecipeDetails from "../Pages/Recipesdetails/RecipeDetails";
+import { GlobalProvider } from "../context";
+import CreateRecipe from "../Pages/CreateRecipe/CreateRecipe";
 import { Container, Nav, Navbar } from "react-bootstrap";
 
 function App() {

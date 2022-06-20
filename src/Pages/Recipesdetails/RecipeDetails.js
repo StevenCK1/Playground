@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { GlobalContext } from "../context";
+import { GlobalContext } from "../../context";
 import "./RecipeDetails.css";
 import Button from "react-bootstrap/Button";
 import { Link, navigate } from "@reach/router";
