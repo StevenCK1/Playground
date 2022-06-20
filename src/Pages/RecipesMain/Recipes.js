@@ -1,16 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { GlobalContext } from "../../context";
 import "./Recipes.css";
 import { Link } from "@reach/router";
-import {
-  Container,
-  Row,
-  Col,
-  Card,
-  Button,
-  Nav,
-  Navbar,
-} from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 
 function Recipes() {
   const { state, dispatch } = useContext(GlobalContext);
