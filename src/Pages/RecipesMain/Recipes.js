@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { GlobalContext } from "../context";
+import { GlobalContext } from "../../context";
 import "./Recipes.css";
 import { Link } from "@reach/router";
 import {
