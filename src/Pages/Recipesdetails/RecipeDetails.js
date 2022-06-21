@@ -14,10 +14,16 @@ function RecipeDetails({ id }) {
     setSelectedRecipe(recipe);
   }, []);
 
-  //delete recipe
   function onDelete(id) {
-    debugger;
-    const updatedRecipes = [...recipes.slice(0, id), ...recipes.slice(id + 1)];
+    // need to find id in object and check what index it is
+    const index = recipes.findIndex((object) => {
+      return Number(object.id) === Number(id);
+    });
+
+    const updatedRecipes = [
+      ...recipes.slice(0, index),
+      ...recipes.slice(index + 1),
+    ];
     dispatch({ type: "SET_RECIPES", recipes: updatedRecipes });
     navigate(`/`);
   }
