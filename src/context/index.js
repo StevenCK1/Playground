@@ -46,6 +46,25 @@ const initialState = {
         },
       ],
     },
+    {
+      id: 2,
+      name: "Pasta 3",
+      imageUrl:
+        "https://www.saltandlavender.com/wp-content/uploads/2021/01/creamy-penne-pasta-3.jpg",
+      method: "sss",
+      ingredients: [
+        {
+          measurement: "100",
+          unit: "grams",
+          name: "spaghetti",
+        },
+        {
+          measurement: "100",
+          unit: "ml",
+          name: "cream",
+        },
+      ],
+    },
   ],
   editing: false,
   editingRecipe: false,

@@ -103,14 +103,14 @@ function CreateRecipe({ id }) {
       )}
       <div className="CreateRecipe-container">
         <div>
-          <p>Name:</p>
+          <label>Name:</label>
           <input value={name} type="text" onChange={onNameChange}></input>
         </div>
         <div>
-          <p>Method:</p>
+          <label>Method:</label>
           <input value={method} type="text" onChange={onMethodChange}></input>
         </div>
-        <p>Ingredients measurement:</p>
+        <label>Ingredients measurement:</label>
 
         <input
           value={ingredientsMeasure}
@@ -118,7 +118,7 @@ function CreateRecipe({ id }) {
           onChange={(e) => setIngredientsMeasure(e.target.value)}
         ></input>
         <div>
-          <p>Ingredients unit:</p>
+          <label>Ingredients unit:</label>
 
           <input
             value={ingredientsUnit}
@@ -126,7 +126,7 @@ function CreateRecipe({ id }) {
             onChange={(e) => setIngredientsUnit(e.target.value)}
           ></input>
 
-          <p>Ingredients name:</p>
+          <label>Ingredients name:</label>
           <input
             type="text"
             value={ingredientsName}

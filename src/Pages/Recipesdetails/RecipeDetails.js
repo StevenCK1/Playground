@@ -14,6 +14,14 @@ function RecipeDetails({ id }) {
     setSelectedRecipe(recipe);
   }, []);
 
+  //delete recipe
+  function onDelete(id) {
+    debugger;
+    const updatedRecipes = [...recipes.slice(0, id), ...recipes.slice(id + 1)];
+    dispatch({ type: "SET_RECIPES", recipes: updatedRecipes });
+    navigate(`/`);
+  }
+
   return (
     <>
       <div className="RecipeDetails"> Recipe Details</div>
@@ -23,7 +31,13 @@ function RecipeDetails({ id }) {
           <Link to={`/edit-recipe/${id}`}>
             <Button>Edit recipe</Button>
           </Link>
-
+          <Button
+            onClick={function () {
+              onDelete(id);
+            }}
+          >
+            Delete recipe
+          </Button>
           <header className="RecipeDetails-header">
             <img
               src={selectedRecipe.imageUrl}
