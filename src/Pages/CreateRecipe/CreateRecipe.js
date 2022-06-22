@@ -33,6 +33,7 @@ function CreateRecipe({ id }) {
     }
   }, []);
 
+  // saves state of inputFields
   const onNameChange = (e) => {
     setName(e.target.value);
   };
@@ -117,41 +118,39 @@ function CreateRecipe({ id }) {
       )}
       <div className="CreateRecipe-container">
         <InputField
-          labelTitle="Name:"
+          labelTitle="Name"
           value={name}
           callFunction={onNameChange}
         />
         <InputField
-          labelTitle="Method:"
+          labelTitle="Method"
           value={method}
           callFunction={onMethodChange}
         />
         <InputField
-          labelTitle="Ingredients measurement:"
+          labelTitle="Ingredients measurement"
           value={ingredientsMeasure}
           callFunction={onIngredientsMeasureChange}
         />
         <InputField
-          labelTitle="Ingredients unit:"
+          labelTitle="Ingredients unit"
           value={ingredientsUnit}
           callFunction={onIngredientsUnitChange}
         />
         <InputField
-          labelTitle="Ingredients name:"
+          labelTitle="Ingredients name"
           value={ingredientsName}
           callFunction={onIngredientsNameChange}
         />
         <div>
           <button onClick={onSaveIngredients}>Add ingredient</button>
         </div>
-        <div>
-          {ingredients.length > 0 && (
-            <ListIngredients
-              arr={ingredients}
-              callFunction={onDeleteIngredient}
-            />
-          )}
-        </div>
+        {ingredients.length > 0 && (
+          <ListIngredients
+            arr={ingredients}
+            callFunction={onDeleteIngredient}
+          />
+        )}
       </div>
       <div>
         <Row>
