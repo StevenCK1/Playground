@@ -1,6 +1,5 @@
 function ListIngredients({ arr, callFunction }) {
   function clickUndefined() {
-    debugger;
     if (callFunction === undefined) {
       return (
         <div className="list-ingredients-container">

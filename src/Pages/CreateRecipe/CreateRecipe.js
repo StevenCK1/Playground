@@ -5,6 +5,7 @@ import { Link, navigate } from "@reach/router";
 import Button from "react-bootstrap/Button";
 import { Row, Col, Container } from "react-bootstrap";
 import ListIngredients from "../../Components/listIngredients/listIngredients";
+import InputField from "../../Components/inputField/inputField";
 
 function CreateRecipe({ id }) {
   const { state, dispatch } = useContext(GlobalContext);
@@ -38,6 +39,18 @@ function CreateRecipe({ id }) {
 
   const onMethodChange = (e) => {
     setMethod(e.target.value);
+  };
+
+  const onIngredientsMeasureChange = (e) => {
+    setIngredientsMeasure(e.target.value);
+  };
+
+  const onIngredientsUnitChange = (e) => {
+    setIngredientsUnit(e.target.value);
+  };
+
+  const onIngredientsNameChange = (e) => {
+    setIngredientsName(e.target.value);
   };
 
   const onSaveIngredients = (e) => {
@@ -103,60 +116,54 @@ function CreateRecipe({ id }) {
         </>
       )}
       <div className="CreateRecipe-container">
-        <div>
-          <label>Name:</label>
-          <input value={name} type="text" onChange={onNameChange}></input>
-        </div>
-        <div>
-          <label>Method:</label>
-          <input value={method} type="text" onChange={onMethodChange}></input>
-        </div>
-        <label>Ingredients measurement:</label>
-
-        <input
+        <InputField
+          labelTitle="Name:"
+          value={name}
+          callFunction={onNameChange}
+        />
+        <InputField
+          labelTitle="Method:"
+          value={method}
+          callFunction={onMethodChange}
+        />
+        <InputField
+          labelTitle="Ingredients measurement:"
           value={ingredientsMeasure}
-          type="text"
-          onChange={(e) => setIngredientsMeasure(e.target.value)}
-        ></input>
+          callFunction={onIngredientsMeasureChange}
+        />
+        <InputField
+          labelTitle="Ingredients unit:"
+          value={ingredientsUnit}
+          callFunction={onIngredientsUnitChange}
+        />
+        <InputField
+          labelTitle="Ingredients name:"
+          value={ingredientsName}
+          callFunction={onIngredientsNameChange}
+        />
         <div>
-          <label>Ingredients unit:</label>
-
-          <input
-            value={ingredientsUnit}
-            type="text"
-            onChange={(e) => setIngredientsUnit(e.target.value)}
-          ></input>
-
-          <label>Ingredients name:</label>
-          <input
-            type="text"
-            value={ingredientsName}
-            onChange={(e) => setIngredientsName(e.target.value)}
-          ></input>
-          <div>
-            <button onClick={onSaveIngredients}>Add ingredient</button>
-          </div>
-          <div>
-            {ingredients.length > 0 && (
-              <ListIngredients
-                arr={ingredients}
-                callFunction={onDeleteIngredient}
-              />
-            )}
-          </div>
+          <button onClick={onSaveIngredients}>Add ingredient</button>
         </div>
         <div>
-          <Row>
-            <Col xs={12} md={6}>
-              <Button onClick={onSave}>Save</Button>
-            </Col>
-            <Col xs={12} md={6}>
-              <Link to={`/recipe-details/${id}`}>
-                <Button> Cancel</Button>
-              </Link>
-            </Col>
-          </Row>
+          {ingredients.length > 0 && (
+            <ListIngredients
+              arr={ingredients}
+              callFunction={onDeleteIngredient}
+            />
+          )}
         </div>
+      </div>
+      <div>
+        <Row>
+          <Col xs={12} md={6}>
+            <Button onClick={onSave}>Save</Button>
+          </Col>
+          <Col xs={12} md={6}>
+            <Link to={`/recipe-details/${id}`}>
+              <Button> Cancel</Button>
+            </Link>
+          </Col>
+        </Row>
       </div>
     </div>
   );
