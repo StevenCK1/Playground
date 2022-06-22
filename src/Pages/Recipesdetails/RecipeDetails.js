@@ -3,6 +3,7 @@ import { GlobalContext } from "../../context";
 import "./RecipeDetails.css";
 import Button from "react-bootstrap/Button";
 import { Link, navigate } from "@reach/router";
+import ListIngredients from "../../Components/listIngredients/listIngredients";
 
 function RecipeDetails({ id }) {
   const [selectedRecipe, setSelectedRecipe] = useState();
@@ -10,7 +11,7 @@ function RecipeDetails({ id }) {
   const { recipes } = state;
   // Mimicing an API call which returns the recipe data from the id in the url
   useEffect(() => {
-    const recipe = recipes.find((r) => r.id == id);
+    const recipe = recipes.find((r) => Number(r.id) === Number(id));
     setSelectedRecipe(recipe);
   }, []);
 
@@ -30,7 +31,7 @@ function RecipeDetails({ id }) {
 
   return (
     <>
-      <div className="RecipeDetails"> Recipe Details</div>
+      <h1 className="RecipeDetails"> Recipe Details</h1>
 
       {selectedRecipe && (
         <div className="RecipeDetails">
@@ -48,18 +49,11 @@ function RecipeDetails({ id }) {
             <img
               src={selectedRecipe.imageUrl}
               className="RecipeDetails-main-image"
+              alt={selectedRecipe.name}
             ></img>
             <div>{selectedRecipe.name}</div>
             <div>{selectedRecipe.method}</div>
-            <div>
-              {selectedRecipe.ingredients.map((item, index) => {
-                return (
-                  <div>
-                    <p>{`${item.measurement} ${item.unit} ${item.name}`}</p>
-                  </div>
-                );
-              })}
-            </div>
+            <ListIngredients arr={selectedRecipe.ingredients} />
           </header>
         </div>
       )}

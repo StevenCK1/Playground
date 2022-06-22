@@ -4,6 +4,7 @@ import "./CreateRecipe.css";
 import { Link, navigate } from "@reach/router";
 import Button from "react-bootstrap/Button";
 import { Row, Col, Container } from "react-bootstrap";
+import ListIngredients from "../../Components/listIngredients/listIngredients";
 
 function CreateRecipe({ id }) {
   const { state, dispatch } = useContext(GlobalContext);
@@ -136,12 +137,12 @@ function CreateRecipe({ id }) {
             <button onClick={onSaveIngredients}>Add ingredient</button>
           </div>
           <div>
-            {ingredients.length > 0 &&
-              ingredients.map((ingredient, index) => (
-                <div onClick={() => onDeleteIngredient(index)}>
-                  {ingredient.measurement} {ingredient.unit} {ingredient.name}
-                </div>
-              ))}
+            {ingredients.length > 0 && (
+              <ListIngredients
+                arr={ingredients}
+                callFunction={onDeleteIngredient}
+              />
+            )}
           </div>
         </div>
         <div>
