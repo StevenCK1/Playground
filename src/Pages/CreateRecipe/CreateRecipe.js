@@ -104,65 +104,67 @@ function CreateRecipe({ id }) {
   };
 
   return (
-    <div className="CreateRecipe">
-      {isEditing && (
-        <>
-          <h1>{isEditing ? "Edit Recipe" : "Create Recipe"}</h1>
-        </>
-      )}
-      {!isEditing && (
-        <>
-          <h1>{isEditing ? "Edit Recipe" : "Create Recipe"}</h1>
-          <Link to={`/`}>Back to Recipes</Link>
-        </>
-      )}
-      <div className="CreateRecipe-container">
-        <InputField
-          labelTitle="Name"
-          value={name}
-          callFunction={onNameChange}
-        />
-        <InputField
-          labelTitle="Method"
-          value={method}
-          callFunction={onMethodChange}
-        />
-        <InputField
-          labelTitle="Ingredients measurement"
-          value={ingredientsMeasure}
-          callFunction={onIngredientsMeasureChange}
-        />
-        <InputField
-          labelTitle="Ingredients unit"
-          value={ingredientsUnit}
-          callFunction={onIngredientsUnitChange}
-        />
-        <InputField
-          labelTitle="Ingredients name"
-          value={ingredientsName}
-          callFunction={onIngredientsNameChange}
-        />
-        <div>
-          <button onClick={onSaveIngredients}>Add ingredient</button>
-        </div>
-        {ingredients.length > 0 && (
-          <ListIngredients
-            arr={ingredients}
-            callFunction={onDeleteIngredient}
-          />
+    <div className="CreateRecipe-page">
+      <div className="CreateRecipe">
+        {isEditing && (
+          <>
+            <h1>{isEditing ? "Edit Recipe" : "Create Recipe"}</h1>
+          </>
         )}
-      </div>
-      <div>
-        <Row>
-          <Col xs={12} md={6}>
-            <Button onClick={onSave}>Save</Button>
-          </Col>
-          <Col xs={12} md={6}>
-            <Link to={`/recipe-details/${id}`}>
-              <Button> Cancel</Button>
-            </Link>
-          </Col>
-        </Row>
+        {!isEditing && (
+          <>
+            <h1>{isEditing ? "Edit Recipe" : "Create Recipe"}</h1>
+            <Link to={`/`}>Back to Recipes</Link>
+          </>
+        )}
+        <div className="CreateRecipe-container">
+          <InputField
+            labelTitle="Name"
+            value={name}
+            callFunction={onNameChange}
+          />
+          <InputField
+            labelTitle="Method"
+            value={method}
+            callFunction={onMethodChange}
+          />
+          <InputField
+            labelTitle="Ingredients measurement"
+            value={ingredientsMeasure}
+            callFunction={onIngredientsMeasureChange}
+          />
+          <InputField
+            labelTitle="Ingredients unit"
+            value={ingredientsUnit}
+            callFunction={onIngredientsUnitChange}
+          />
+          <InputField
+            labelTitle="Ingredients name"
+            value={ingredientsName}
+            callFunction={onIngredientsNameChange}
+          />
+          <div>
+            <button onClick={onSaveIngredients}>Add ingredient</button>
+          </div>
+          {ingredients.length > 0 && (
+            <ListIngredients
+              arr={ingredients}
+              callFunction={onDeleteIngredient}
+            />
+          )}
+        </div>
+        <div>
+          <Row>
+            <Col xs={12} md={6}>
+              <Button onClick={onSave}>Save</Button>
+            </Col>
+            <Col xs={12} md={6}>
+              <Link to={`/recipe-details/${id}`}>
+                <Button> Cancel</Button>
+              </Link>
+            </Col>
+          </Row>
+        </div>
       </div>
     </div>
   );

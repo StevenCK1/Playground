@@ -8,15 +8,13 @@ function Recipes() {
   const { state, dispatch } = useContext(GlobalContext);
   const { recipes } = state;
   return (
-    <body>
-      <div className="Recipes">
-        <div className="Recipes-container">
-          <Container>
-            <ListRecipeCards arr={recipes} />
-          </Container>
-        </div>
+    <div className="Recipes">
+      <div className="Recipes-container">
+        <Container>
+          <ListRecipeCards arr={recipes} />
+        </Container>
       </div>
-    </body>
+    </div>
   );
 }
 

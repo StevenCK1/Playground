@@ -30,7 +30,7 @@ function RecipeDetails({ id }) {
   }
 
   return (
-    <>
+    <div className="RecipeDetails-page">
       <h1 className="RecipeDetails"> Recipe Details</h1>
 
       {selectedRecipe && (
@@ -57,7 +57,7 @@ function RecipeDetails({ id }) {
           </header>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

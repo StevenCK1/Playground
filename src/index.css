@@ -2,14 +2,11 @@
 
 :root {
   --main-bg-color: #bcf6f6;
+  --primary-color: #17a6a6;
   --secondary-color: #698cdd;
 }
 
 * {
   font-family: "Source Sans Pro", sans-serif;
   color: black;
-}
-
-body {
-  background-color: var(--main-bg-color);
 }
