@@ -10,7 +10,7 @@ import { Container, Nav, Navbar } from "react-bootstrap";
 function App() {
   return (
     <GlobalProvider>
-      <Navbar bg="light" variant="light">
+      <Navbar bg="info" variant="light">
         <Container>
           <Navbar.Brand href="/">Recipes</Navbar.Brand>
           <Nav className="me-auto">

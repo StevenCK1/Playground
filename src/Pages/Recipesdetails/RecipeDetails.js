@@ -3,6 +3,7 @@ import { GlobalContext } from "../../context";
 import "./RecipeDetails.css";
 import Button from "react-bootstrap/Button";
 import { Link, navigate } from "@reach/router";
+import { Row, Col, Container } from "react-bootstrap";
 import ListIngredients from "../../Components/listIngredients/listIngredients";
 
 function RecipeDetails({ id }) {
@@ -31,30 +32,35 @@ function RecipeDetails({ id }) {
 
   return (
     <div className="RecipeDetails-page">
-      <h1 className="RecipeDetails"> Recipe Details</h1>
-
       {selectedRecipe && (
         <div className="RecipeDetails">
-          <Link to={`/edit-recipe/${id}`}>
-            <Button>Edit recipe</Button>
-          </Link>
-          <Button
-            onClick={function () {
-              onDelete(id);
-            }}
-          >
-            Delete recipe
-          </Button>
-          <header className="RecipeDetails-header">
+          <Row>
+            <Col xs={6} md={6}>
+              <Link to={`/edit-recipe/${id}`}>
+                <Button variant="secondary">Edit recipe</Button>
+              </Link>
+            </Col>
+            <Col xs={6} md={6}>
+              <Button
+                variant="secondary"
+                onClick={function () {
+                  onDelete(id);
+                }}
+              >
+                Delete recipe
+              </Button>
+            </Col>
+          </Row>
+          <div className="RecipeDetails-container">
+            <h2>{selectedRecipe.name}</h2>
             <img
               src={selectedRecipe.imageUrl}
               className="RecipeDetails-main-image"
               alt={selectedRecipe.name}
             ></img>
-            <div>{selectedRecipe.name}</div>
-            <div>{selectedRecipe.method}</div>
             <ListIngredients arr={selectedRecipe.ingredients} />
-          </header>
+            <div>{selectedRecipe.method}</div>
+          </div>
         </div>
       )}
     </div>

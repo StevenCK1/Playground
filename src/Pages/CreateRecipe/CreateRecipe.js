@@ -156,11 +156,13 @@ function CreateRecipe({ id }) {
         <div>
           <Row>
             <Col xs={12} md={6}>
-              <Button onClick={onSave}>Save</Button>
+              <Button variant="secondary" onClick={onSave}>
+                Save
+              </Button>
             </Col>
             <Col xs={12} md={6}>
               <Link to={`/recipe-details/${id}`}>
-                <Button> Cancel</Button>
+                <Button variant="secondary"> Cancel</Button>
               </Link>
             </Col>
           </Row>

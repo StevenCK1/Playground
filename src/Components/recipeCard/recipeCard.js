@@ -10,7 +10,7 @@ function ListRecipeCards({ arr }) {
             to={`/recipe-details/${recipe.id}`}
             style={{ textDecoration: "none", color: "#000" }}
           >
-            <Card>
+            <Card bg="info">
               <Card.Img
                 variant="top"
                 src={recipe.imageUrl}
